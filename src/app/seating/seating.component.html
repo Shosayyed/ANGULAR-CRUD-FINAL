@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <form [formGroup]="form" (ngSubmit)="save()" class="row g-3">
+    <div class="col-md-4">
+      <input class="form-control" placeholder="Section Name" formControlName="seatingSectionName" />
+    </div>
+    <div class="col-md-2">
+      <input type="number" class="form-control" placeholder="Discount %" formControlName="discPerc" />
+    </div>
+    <div class="col-md-3">
+      <input type="date" class="form-control" formControlName="discEndDate" />
+    </div>
+    <div class="col-md-3 form-check pt-2">
+      <input type="checkbox" class="form-check-input" formControlName="allowIncentive" />
+      <label class="form-check-label">Allow Incentive</label>
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-success">{{ isEdit ? 'Update' : 'Add' }}</button>
+    </div>
+  </form>
+  <hr />
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Section</th><th>Discount %</th><th>End Date</th><th>Incentive</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of list || []">
+        <td>{{ x.seatingSectionName }}</td>
+        <td>{{ x.discPerc }}</td>
+        <td>{{ x.discEndDate }}</td>
+        <td>{{ x.allowIncentive }}</td>
+        <td>
+          <button (click)="edit(x)" class="btn btn-warning btn-sm">Edit</button>
+          <button (click)="remove(x.id)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
