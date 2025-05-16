@@ -20,7 +20,7 @@ export class SeatingService {
   }
 
   update(data: any) {
-    return this.http.put(this.baseUrl + 'Update', data, { headers: this.headers });
+    return this.http.post(this.baseUrl + 'Update', data, { headers: this.headers });
   }
 
   delete(id: number) {
